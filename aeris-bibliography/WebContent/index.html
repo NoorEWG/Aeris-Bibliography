@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aeris Bibliography</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<button id="viewpubl" class="btn btn-danger">show all
+			publications</button>
+		<input id="tag" placeholder="type a tag" />
+		<button id="viewpubltag">show publications by tag</button>
+	</div>
+	<div id="result"></div>
+</body>
+
+<script>
+	$("#viewpubltag").click(function() {
+
+		var tag = $("#tag").val();
+		// var url = "https://www.bibsonomy.org/api/posts?resourcetype=bookmark&end=10&format=json";  
+		var urlBase = "http://127.0.0.1:8080/aeris-bibliography/rest/publication";
+		var url = urlBase + "/tag/" + tag;
+		console.log(url);
+
+		var request = $.ajax({
+			type : "GET",
+			crossDomain : true,
+			dataType : 'jsonp',
+			contentType : 'application/json;charset=UTF-8',
+			url : url
+		});
+		request.done(function(data) {
+			console.log(JSON.stringify(data));
+		});
+		request.fail(function(jqXHR, textStatus) {
+			alert("Request failed: " + textStatus);
+		});
+
+	});
+</script>
+
+
+</html>

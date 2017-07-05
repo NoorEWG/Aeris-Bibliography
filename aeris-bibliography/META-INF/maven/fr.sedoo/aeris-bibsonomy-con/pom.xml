@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.sedoo</groupId>
+	<artifactId>aeris-bibsonomy-con</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>aeris-bibsonomy-con</name>
+	<description>bibsonomy integration bibliography aeris</description>
+
+	<properties>
+		<cible>DEV-EB</cible>
+		<bibsonomy-version>3.8.1</bibsonomy-version>
+		<eccad-api-con-version>0.0.1-SNAPSHOT</eccad-api-con-version>
+		<junit-version>4.7</junit-version>
+		<jersey-version>1.19.4</jersey-version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>bibsonomy-repo</id>
+			<name>Releases von BibSonomy-Modulen</name>
+			<url>http://dev.bibsonomy.org/maven2/</url>
+		</repository>
+
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.bibsonomy</groupId>
+			<artifactId>bibsonomy-rest-client</artifactId>
+			<version>${bibsonomy-version}</version>
+		</dependency>
+		<!-- Model, DAO and services -->
+		<dependency>
+			<groupId>fr.sedoo.eccad2</groupId>
+			<artifactId>eccad-api-con</artifactId>
+			<version>${eccad-api-con-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>fr.sedoo.eccad2</groupId>
+			<artifactId>eccad2-aeris-link</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	
+		<!-- unit test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-client -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-json -->
+<dependency>
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-json</artifactId>
+    <version>${jersey-version}</version>
+</dependency>
+
+
+
+	</dependencies>
+
+	<build>
+		<filters>
+			<filter>src/main/filters/${cible}.properties</filter>
+		</filters>
+	</build>
+
+</project>
